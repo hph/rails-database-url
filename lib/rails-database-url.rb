@@ -8,12 +8,9 @@ module RailsDatabaseUrl
   end
 
   private
-  def self.rails_loaded?
-    const_defined?(:Rails)
-  end
 
   def self.env
-    return Rails.env if rails_loaded?
+    return Rails.env if defined? Rails
     ENV["RAILS_ENV"] || ENV["RACK_ENV"]
   end
 
